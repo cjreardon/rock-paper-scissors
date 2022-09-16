@@ -13,51 +13,67 @@ function playRound(playerChoice, computerChoice) {
   if (computerChoice === playerChoice) {
     return [`Tie! ${playerChoice} ties ${computerChoice}`, null];
   } else if (playerChoice === "Rock" && computerChoice === "Scissors") {
-    return [`You win this round! ${playerChoice} beats ${computerChoice}`, true];
+    return [
+      `You win this round! ${playerChoice} beats ${computerChoice}`,
+      true,
+    ];
   } else if (playerChoice === "Rock" && computerChoice === "Paper") {
-    return [`You lose this round! ${computerChoice} beats ${playerChoice}`, false];
+    return [
+      `You lose this round! ${computerChoice} beats ${playerChoice}`,
+      false,
+    ];
   } else if (playerChoice === "Paper" && computerChoice === "Rock") {
-    return [`You win this round! ${playerChoice} beats ${computerChoice}`, true];
+    return [
+      `You win this round! ${playerChoice} beats ${computerChoice}`,
+      true,
+    ];
   } else if (playerChoice === "Paper" && computerChoice === "Scissors") {
-    return [`You lose this round! ${computerChoice} beats ${playerChoice}`, false];
+    return [
+      `You lose this round! ${computerChoice} beats ${playerChoice}`,
+      false,
+    ];
   } else if (playerChoice === "Scissors" && computerChoice === "Paper") {
-    return [`You win this round! ${playerChoice} beats ${computerChoice}`, true];
+    return [
+      `You win this round! ${playerChoice} beats ${computerChoice}`,
+      true,
+    ];
   } else if (playerChoice === "Scissors" && computerChoice === "Rock") {
-    return [`You lose this round! ${computerChoice} beats ${playerChoice}`, false];
+    return [
+      `You lose this round! ${computerChoice} beats ${playerChoice}`,
+      false,
+    ];
   }
 }
 
 function game() {
   let userScore = 0;
   let computerScore = 0;
-  const elements = document.querySelectorAll(".btn");
-  const result = document.querySelector(".results");
+  let elements = document.querySelectorAll(".btn");
+  let result = document.querySelector(".results");
   elements.forEach((element) => {
     element.addEventListener("click", function handleClick(e) {
-      roundResult = playRound(
-        e.target.innerText,
-        getComputerChoice()
-      );
+      roundResult = playRound(e.target.alt, getComputerChoice());
       if (roundResult[1] === true) {
         userScore++;
       } else if (roundResult[1] === false) {
         computerScore++;
       }
-      if(userScore == 5){
-        result.innerText = `Game Over! You win!\n Player: ${userScore} Computer: ${computerScore}`;
+      let scoreboard = document.getElementsByClassName("score-number");
+      scoreboard[0].innerText = userScore;
+      scoreboard[1].innerText = computerScore;
+      if (userScore == 5) {
+        result.innerText = "Game Over! You win!";
         userScore = 0;
         computerScore = 0;
         return;
       }
-      if(computerScore == 5){
-        result.innerText = `Game Over! You lose!\n Player: ${userScore} Computer: ${computerScore}`;
+      if (computerScore == 5) {
+        result.innerText = "Game Over! You lose!";
         userScore = 0;
         computerScore = 0;
         return;
       }
-      result.innerText =
-        roundResult[0] +
-        `. The current score is:\n Player: ${userScore} Computer: ${computerScore}`;
+      result.innerText = roundResult[0];
     });
   });
 }

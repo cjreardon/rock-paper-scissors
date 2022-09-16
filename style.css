@@ -3,6 +3,19 @@ body {
   padding-top: 50px;
 }
 
+.btn {
+  height: auto;
+  width: 125px;
+  flex-shrink: 1;
+  border: 3px inset;
+  padding: 8px;
+}
+
+.btn:hover {
+  border: 3px outset;
+  cursor: pointer;
+}
+
 .content {
   display: flex;
   flex-direction: column;
@@ -13,8 +26,9 @@ body {
 
 .button-container {
   display: flex;
-  justify-content: space-between;
-  width: 300px;
+  justify-content: space-around;
+  gap: 42px;
+  width: 500px;
   padding: 50px;
 }
 
@@ -22,4 +36,26 @@ header {
   text-align: center;
   font-weight: bold;
   font-size: 48px;
+}
+
+.scoreboard {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 50px;
+  gap: 50px;
+}
+
+.score-number {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  width: 50px;
+  text-align: center;
+}
+
+.user-score .score-number {
+  margin-left: 11px;
+}
+
+.computer-score .score-number {
+  margin-left: 23px;
 }
