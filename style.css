@@ -1,0 +1,25 @@
+body {
+  background-color: cornsilk;
+  padding-top: 50px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+  padding: 50px;
+}
+
+header {
+  text-align: center;
+  font-weight: bold;
+  font-size: 48px;
+}
